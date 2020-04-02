@@ -28,6 +28,10 @@ Asennettu
 Luotu /models hakemisto ja lisätty blog.js MongoDB'tä varten.  
 Luotu /test-request hakemisto REST testitapauksia varten.  
 
+4.2 blogilista, step2  
+Ohjelman jakaminen  
+/utils/logger.js  // keskitetty lokitus  
+
 
 
 

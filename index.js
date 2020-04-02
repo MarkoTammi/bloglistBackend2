@@ -11,6 +11,9 @@ const http = require('http')
 const express = require('express')
 const app = express()
 
+// Centralized logging module
+const logger = require('./utils/logger')
+
 // body-parser is express library - access to data send by post-method
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
@@ -57,6 +60,6 @@ app.post('/api/blogs', (request, response) => {
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`, timestamp('YYYY/MM/DD HH:mm:ss'))
+    logger.info(`Server running on port ${PORT}`, timestamp('YYYY/MM/DD HH:mm:ss'))
 })
 
