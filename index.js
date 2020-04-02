@@ -1,8 +1,6 @@
 
 
-// server running enviroment
-// fetch .env file
-require('dotenv').config()
+
 
 // include Node internal web-server module
 const http = require('http')
@@ -10,6 +8,9 @@ const http = require('http')
 // web framework for Node.js
 const express = require('express')
 const app = express()
+
+// Configutation module
+const config = require('./utils/config')
 
 // Centralized logging module
 const logger = require('./utils/logger')
@@ -58,8 +59,7 @@ app.post('/api/blogs', (request, response) => {
         })
 })
 
-const PORT = process.env.PORT
-app.listen(PORT, () => {
-    logger.info(`Server running on port ${PORT}`, timestamp('YYYY/MM/DD HH:mm:ss'))
+app.listen(config.PORT, () => {
+    logger.info(`Server running on port ${config.PORT}`, timestamp('YYYY/MM/DD HH:mm:ss'))
 })
 

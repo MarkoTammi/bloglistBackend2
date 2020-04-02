@@ -4,14 +4,18 @@
 // Library for MongoDB
 const mongoose = require('mongoose')
 
+// Fetch configuration definitions
+const config = require('../utils/config')
+const logger = require('../utils/logger')
+
 // Connection to Mongo
-const mongoUrl = process.env.MONGODB_URI
+const mongoUrl = config.MONGODB_URI
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
-        console.log('Connected to MONGO')
+        logger.info('Connected to MONGO')
     })
     .catch((error) => {
-        console.log('Error connecting to MONGO >> ', error.message)
+        logger.error('Error connecting to MONGO >> ', error.message)
     })
 
 // Document schema for the blog
