@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "test": "jest --verbose"
   },
   "author": "MarkoTammi",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^6.8.0",
+    "jest": "^25.2.7",
     "nodemon": "^2.0.2"
   },
   "dependencies": {
@@ -22,5 +23,8 @@
     "mongoose": "^5.9.7",
     "morgan": "^1.10.0",
     "time-stamp": "^2.2.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

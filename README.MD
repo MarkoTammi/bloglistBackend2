@@ -28,13 +28,22 @@ Asennettu
 Luotu /models/blog.js >> db-schema    
 Luotu /test-request/ >> REST testitapauksia varten.  
 
-4.2 blogilista, step2  - git branch part4-02
-Ohjelman jakaminen pienempiin moduleihin 
+4.2 blogilista, step2  - git branch part4-02  
+Ohjelman jakaminen pienempiin moduleihin  
 /utils/logger.js  // keskitetty lokitus  
 /controllers/blogs.js // API polut ja router  
 /utils/middleware.js  // http request logger, unknownEndpoint  
 
 Refaktoroitu koodi ja testattu toimivaksi  
+
+4.3: apufunktioita ja yksikkötestejä, step1  - git branch part4-03  
+Asennettu Jets testikirjasto  
+npm install --save-dev jest  
+Luotu /tests -hakemisto ja ensimmäisiä testejä  
+Suoritus kommennolla "npm test"  
+
+
+
 
 
 
