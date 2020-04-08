@@ -42,6 +42,8 @@ npm install --save-dev jest
 Luotu /tests -hakemisto ja ensimmäisiä testejä  
 Suoritus kommennolla "npm test"  
 
+4.4: apufunktioita ja yksikkötestejä, step2  - git branch part4-04   
+Luotu totalLikes testi  
 
 
 
