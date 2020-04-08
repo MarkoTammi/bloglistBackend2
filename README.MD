@@ -25,12 +25,21 @@ Asennettu
 - npm install --save time-stamp // Moduli aikaleiman formatointiin   
 - npm install morgan // Moduli tekemään lokitusta http-pyynnöistä   
 
-Luotu /models hakemisto ja lisätty blog.js MongoDB'tä varten.  
-Luotu /test-request hakemisto REST testitapauksia varten.  
+Luotu /models/blog.js >> db-schema    
+Luotu /test-request/ >> REST testitapauksia varten.  
 
-4.2 blogilista, step2  
-Ohjelman jakaminen  
+4.2 blogilista, step2  - git branch part4-02
+Ohjelman jakaminen pienempiin moduleihin 
 /utils/logger.js  // keskitetty lokitus  
+/controllers/blogs.js // API polut ja router  
+/utils/middleware.js  // http request logger, unknownEndpoint  
+
+Refaktoroitu koodi ja testattu toimivaksi  
+
+
+
+
+
 
 
 

@@ -1,13 +1,11 @@
 
+// START FILE
 
-
+const app = require('./App')
 
 // include Node internal web-server module
 const http = require('http')
 
-// web framework for Node.js
-const express = require('express')
-const app = express()
 
 // Configutation module
 const config = require('./utils/config')
@@ -15,51 +13,23 @@ const config = require('./utils/config')
 // Centralized logging module
 const logger = require('./utils/logger')
 
-// body-parser is express library - access to data send by post-method
-const bodyParser = require('body-parser')
-app.use(bodyParser.json())
+
+const server = http.createServer(app)
 
 
-// middleware for logging http request to console
+/* // middleware for logging http request to console
+NOT USED instead /utils/middleware.js-requestLogger
 const morgan = require('morgan')
 morgan.token('body', function (req, res) { return JSON.stringify(req.body) })
-app.use(morgan(':method - :url - :status - :body - :date[clf]'))
+app.use(morgan(':method - :url - :status - :body - :date[clf]')) */
 
 
-// Node mw cors - allow access from all origins
-const cors = require('cors')
-app.use(cors())
 
 // Timestamp extension
 const timestamp = require('time-stamp')
 
-// MongoDB definitions
-const Blog = require('./models/blog')
 
-
-app.get('/', (request, response) => {
-    response.send('<h3>Use url /api/blogs</h3>')
-})
-
-app.get('/api/blogs', (request, response) => {
-    Blog
-        .find({})
-        .then(blogs => {
-            response.json(blogs)
-        })
-})
-
-app.post('/api/blogs', (request, response) => {
-    const blog = new Blog(request.body)
-
-    blog
-        .save()
-        .then(result => {
-            response.status(201).json(result)
-        })
-})
-
-app.listen(config.PORT, () => {
+server.listen(config.PORT, () => {
     logger.info(`Server running on port ${config.PORT}`, timestamp('YYYY/MM/DD HH:mm:ss'))
 })
 
