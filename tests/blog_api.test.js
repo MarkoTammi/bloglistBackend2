@@ -28,11 +28,10 @@ describe('Delete existing blogs and create initial blogs', () => {
             .expect('Content-Type', /application\/json/)
     })
 
-    test('Number of blogs', async () => {
+    test('All blogs are returned', async () => {
         const response = await api.get('/api/blogs')
         expect(response.body).toHaveLength(helper.initialBlogs.length)
     })
-
 })
 
 
@@ -102,6 +101,26 @@ describe('Blog without "title', () => {
             .expect(400)
         const secondResponse = await api.get('/api/blogs')
         expect(secondResponse.body.length).toBe(initialResponse.body.length)
+    })
+})
+
+describe('Delete one blog', () => {
+    test('Succeed with status 204, lenght is -1 and no body[1] title exist', async () => {
+        const initialResponse = await api.get('/api/blogs')
+        await api
+            .delete(`/api/blogs/${initialResponse.body[1].id}`)
+            .expect(204)
+        const secondResponse = await api.get('/api/blogs')
+        expect(secondResponse.body.length).toBe(initialResponse.body.length-1)
+
+        const titles = secondResponse.body.map(r => r.title)
+        expect(titles).not.toContain(initialResponse.body[1].title)
+    })
+})
+
+describe('Update one blog', () => {
+    test('Succeed with status 200 if "likes" update is +1', async () => {
+        console.log('To be done')
     })
 })
 

@@ -56,14 +56,18 @@ Asennettu cross-env kirjasto
 npm install cross-env  
 Asennettu supertest kirjasto  
 npm install --save-dev supertest  
-Asennettu express-async-errors kirjasto 
+Asennettu express-async-errors kirjasto  
 npm install express-async-errors --save   
 Poistettu .catch rakenteet  
 
 4.10 - 12 : blogilistan testit, step3 - 5  
 Lisätty API testejä ja parannettu APIn virheenkäsittelyä  
 
+4.13 blogilistan laajennus, step1  
+Blogin poisto ja testi  
 
+4.14* blogilistan laajennus, step2  
+Blogin päivitys ja testi >> TO DO  
 
 
 

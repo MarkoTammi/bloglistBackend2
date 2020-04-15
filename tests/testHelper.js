@@ -35,8 +35,17 @@ const blogWithout = [
     }
 ]
 
+const deleteBlog = [
+    {
+        title: 'BlogDelete',
+        author: 'Author of BlogDelete',
+        url: 'http://www.example.com',
+        likes: 12,
+    }
+]
 
 module.exports = {
     initialBlogs,
-    blogWithout
+    blogWithout,
+    deleteBlog
 }

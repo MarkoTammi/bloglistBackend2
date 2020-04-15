@@ -18,7 +18,7 @@ logger.info('Connecting to MongoDB ....')
 
 mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
-        logger.info('Connected to MongoDB')
+        logger.info('Connected to MongoDB. Start coding ...')
     })
     .catch((error) => {
         logger.error('Error connection to MongoDB:', error.message)

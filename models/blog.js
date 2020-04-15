@@ -6,6 +6,8 @@
 // Library for MongoDB
 const mongoose = require('mongoose')
 
+// Allow use of FindAndModify
+mongoose.set('useFindAndModify', false)
 
 // Document schema for the blog
 const blogSchema = new mongoose.Schema({
