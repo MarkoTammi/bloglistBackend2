@@ -2,8 +2,8 @@
 
 const config = require('./utils/config')
 
-// web framework for Node.js
 const express = require('express')
+require('express-async-errors')
 const app = express()
 
 const cors = require('cors')

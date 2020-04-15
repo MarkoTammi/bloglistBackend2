@@ -2,7 +2,9 @@
 // Central logger module to display messages to console log
 
 const info = (...params) => {
-    console.log(...params)
+    if (process.env.NODE_ENV !== 'test'){
+        console.log(...params)
+    }
 }
 
 const error = (...params) => {

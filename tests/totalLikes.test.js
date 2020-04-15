@@ -1,5 +1,6 @@
 
 // Count how many "likes" together in blogs
+// not integrated with Blog backend yet
 
 const listHelper = require('../utils/list_helper')
 

@@ -9,7 +9,13 @@ repo - git init
 ### Käynnistys  
 Backendin käynnistys kehitysmoodissa  
 npm run dev >> localhost:3003  
- 
+
+Backendin käynnistys testausmoodissa 
+npm run test  
+
+Yksittäisen testin ajo esim.
+npm test -- tests/blog_api.test.js  
+
 
 ### Edistyminen
 
@@ -44,6 +50,26 @@ Suoritus kommennolla "npm test"
 
 4.4: apufunktioita ja yksikkötestejä, step2  - git branch part4-04   
 Luotu totalLikes testi  
+
+4.8: blogilistan testit, step 1  
+Asennettu cross-env kirjasto  
+npm install cross-env  
+Asennettu supertest kirjasto  
+npm install --save-dev supertest  
+Asennettu express-async-errors kirjasto 
+npm install express-async-errors --save   
+Poistettu .catch rakenteet  
+
+4.10 - 12 : blogilistan testit, step3 - 5  
+Lisätty API testejä ja parannettu APIn virheenkäsittelyä  
+
+
+
+
+
+
+
+
 
 
 
