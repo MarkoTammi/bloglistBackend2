@@ -66,8 +66,10 @@ Lisätty API testejä ja parannettu APIn virheenkäsittelyä
 4.13 blogilistan laajennus, step1  
 Blogin poisto ja testi  
 
-4.14* blogilistan laajennus, step2  
-Blogin päivitys ja testi >> TO DO  
+4.14* blogilistan laajennus, step2  - git branch part4-14  
+Blogin päivitys ja testi  
+
+
 
 
 

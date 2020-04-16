@@ -119,8 +119,25 @@ describe('Delete one blog', () => {
 })
 
 describe('Update one blog', () => {
-    test('Succeed with status 200 if "likes" update is +1', async () => {
+    test('Succeed if "likes" update is +11', async () => {
         console.log('To be done')
+
+        // Create blog to be updated
+        const firstBlogObject = new Blog(helper.initialBlogs[0])
+        const firstResponse = await api
+            // eslint-disable-next-line indent
+                                    .post('/api/blogs')
+            // eslint-disable-next-line indent
+                                    .send(firstBlogObject)
+        // Blog which update the first one
+        const secondBlogObject = new Blog(helper.updateBlog[0])
+        const secondResponse = await api
+                                    .put(`/api/blogs/${firstResponse.body.id}`)
+                                    .send(secondBlogObject)
+
+        // Expect increase of 'blog.likes' by +11
+        expect(secondResponse.body.likes - firstResponse.body.likes).toBe(11)
+
     })
 })
 

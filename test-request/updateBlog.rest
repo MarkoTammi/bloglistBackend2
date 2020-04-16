@@ -1,8 +1,8 @@
-PUT http://localhost:3003/api/blogs/5e96f52f4cde1f5357792ee0
+PUT http://localhost:3003/api/blogs/5e9840cec16724c3fa7b8026
 Content-Type: application/json
 
 {
-    "title": "Blog1",
+    "title": "Blog - updated via .rest",
     "author": "Author of update",
     "url": "http://www.example.com",
     "likes": 12
