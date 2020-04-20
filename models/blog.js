@@ -1,7 +1,8 @@
 
 
+// /models/blog.js
 
-// DB model for blog
+// MongoDB model for blog
 
 // Library for MongoDB
 const mongoose = require('mongoose')
@@ -10,12 +11,19 @@ const mongoose = require('mongoose')
 mongoose.set('useFindAndModify', false)
 
 // Document schema for the blog
-const blogSchema = new mongoose.Schema({
-    title: String,
-    author: String,
-    url: String,
-    likes: Number
-})
+const blogSchema = new mongoose.Schema(
+    {
+        title: String,
+        author: String,
+        url: String,
+        likes: Number,
+        user:
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User'
+            }
+    }
+)
 
 blogSchema.set('toJSON', {
     transform: (document, returnedObject) => {

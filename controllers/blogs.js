@@ -1,14 +1,22 @@
 
+
+// /controllers/blogs.js
+
 // Blog API router file
 
 
 const blogsRouter = require('express').Router()
 
 const Blog = require('../models/blog')
+const User = require('../models/user')
+
 
 // Get all blogs
 blogsRouter.get('/', async (request, response) => {
-    const blogs = await Blog.find({})
+    const blogs = await Blog
+        .find({})
+        .populate('user', { username: 1, name: 1 } )
+
     response.json(blogs.map(blog => blog.toJSON()))
 })
 
@@ -21,17 +29,26 @@ blogsRouter.post('/', async (request, response) => {
         return response.status(400).end()
     }
 
+    const user = await User.findOne({ username: 'marko@test.fi' })
+
     const blog = new Blog(
         {
             title: body.title,
             author: body.author,
             url: body.url,
             // If "likes" is not defined its set to 0
-            likes: body.likes === undefined ? 0 : body.likes
+            likes: body.likes === undefined ? 0 : body.likes,
+            user: user._id
         })
 
     const savedBlog = await blog.save()
+
+    // Save blog info also to user object
+    user.blogs = user.blogs.concat(savedBlog._id)
+    await user.save()
+
     response.json(savedBlog.toJSON())
+
 })
 
 // Update blog based on id

@@ -132,7 +132,9 @@ describe('Update one blog', () => {
         // Blog which update the first one
         const secondBlogObject = new Blog(helper.updateBlog[0])
         const secondResponse = await api
+            // eslint-disable-next-line indent
                                     .put(`/api/blogs/${firstResponse.body.id}`)
+            // eslint-disable-next-line indent
                                     .send(secondBlogObject)
 
         // Expect increase of 'blog.likes' by +11

@@ -69,6 +69,35 @@ Blogin poisto ja testi
 4.14* blogilistan laajennus, step2  - git branch part4-14  
 Blogin päivitys ja testi  
 
+4.15: blogilistan laajennus, step4  
+Käyttäjähallinta  
+- yksittäisen käyttäjän lisäys (post)  
+- kaikkien käyttäjien tiedot (get)  
+Asennettu salasanojen hashaamisen bcrypt -kirjasto
+npm install bcrypt --save   
+REST testejä    
+
+4.16*: blogilistan laajennus, step5
+Tarkistuksia käyttjän lisäykseen  
+Asennettu Mongo kenttien tarkistamiseen mongoose-unigue-validator  
+npm install --save mongoose-unique-validator  
+REST testejä  
+
+4.17: blogilistan laajennus, step6  
+Laajentaa mitä tietoja tallennetaan ja näytetään sekä blog että user olioista.  
+REST testejä  
+
+4.18: blogilistan laajennus, step7  - git branch part4-18  
+Token -perustainen kirjautuminen  
+Asennettu jsonwebtoken -kirjasto  
+npm install jsonwebtoken --save  
+Luotu /controller/login.js  
+REST testi login.rest  
+
+Poistettu /tests -hakemiston harjoitustestit  
+
+
+
 
 
 
