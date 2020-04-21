@@ -19,6 +19,11 @@ Tyylistä pitää huolen eslint.
 backend srv luotu - npm init  
 repo - git init  
 
+### GIT
+
+paikallisen haaran push remote haaraan esim
+git push -u origin part4-22
+
 ### Käynnistys  
 Backendin käynnistys kehitysmoodissa  
 npm run dev >> localhost:3003  
