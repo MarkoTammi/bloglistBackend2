@@ -54,9 +54,32 @@ const updateBlog = [
     }
 ]
 
+const testUser =
+{
+    username: 'marko@test.fi',
+    password: 'salainen'
+}
+
+const blogsToken = [
+    {
+        title: 'Blog1 - Token',
+        author: 'Marko1 - Token',
+        url: 'http://www.example1.com',
+        likes: 1,
+    },
+    {
+        title: 'Blog2 - Token',
+        author: 'Marko2 - Token',
+        url: 'http://www.example2.com',
+        likes: 2,
+    }
+]
+
 module.exports = {
     initialBlogs,
     blogWithout,
     deleteBlog,
-    updateBlog
+    updateBlog,
+    testUser,
+    blogsToken
 }

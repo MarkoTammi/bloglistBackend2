@@ -1,6 +1,19 @@
 
 ## HY / Fullstack MOOC / Bloglist backend v2
 
+### Toiminnallisuus  
+
+Blogi backend sovellus, joka on toteutettu Node.js.  
+Blogien lisäys vaatii kirjautumisen.  
+
+/controllers -hakemisto API rajapinta kutsuille  
+/models -hakemisto blog ja user MongoDB dataschemoille  
+/test-request -hakemisto REST API testeille VS Code REST client    
+/test -hakemisto JETS ja SUPERTEST -kirjaston testeille  
+/utils -hakemistossa middlewaret ja muita yhteistä koodia  
+
+Tyylistä pitää huolen eslint.  
+
 ### Luonti  
 
 backend srv luotu - npm init  
@@ -104,6 +117,15 @@ REST testit
 Refaktorointi tokenin erottaminen middlewareksi, joka ottaa  
 tokenin Authorization-headerista ja sijoittaa sen request-olion  
 token -kenttään.  
+
+4.21*: blogilistan laajennus, step10  
+Lisätty blogin poistavaa operaatiota siten, että poisto onnistuu  
+ainoastaan jos poisto-operaation tekijä on sama kuin blogin lisääjä.  
+
+4.22*: blogilistan laajennus, step11 - git branch part4-22  
+Muokattu testejä huomioimaan login.  
+
+4-kappale päättyy tähän.  
 
 
 

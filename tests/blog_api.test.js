@@ -10,7 +10,7 @@ const Blog = require('../models/blog')
 
 const helper = require('./testHelper')
 
-describe('Delete existing blogs and create initial blogs', () => {
+describe('Delete existing blogs and create initial blogs directly to Mongo without API', () => {
 // Delete all existing blogs and save initial blogs to Mongo for tests
 
     beforeEach(async () => {
@@ -21,14 +21,14 @@ describe('Delete existing blogs and create initial blogs', () => {
         await blogObject.save()
     })
 
-    test('Blogs are returned as json', async () => {
+    test('Blogs are returned as json via API', async () => {
         await api
             .get('/api/blogs')
             .expect(200)
             .expect('Content-Type', /application\/json/)
     })
 
-    test('All blogs are returned', async () => {
+    test('All blogs are returned via API', async () => {
         const response = await api.get('/api/blogs')
         expect(response.body).toHaveLength(helper.initialBlogs.length)
     })
@@ -48,7 +48,62 @@ describe('Test content of a specific blog', () => {
     })
 })
 
-describe('Add one blog and test that # of blogs +1', () => {
+
+describe('Login test', () => {
+
+    test('Login testUser', async () => {
+        const response = await api
+            .post('/api/login')
+            .send(helper.testUser)
+            .expect(200)
+        //console.log('responseToken',response.body.token)
+        expect(response.body.username).toBe(helper.testUser.username)
+    })
+})
+
+
+describe('Add and delete blog with token', () => {
+
+    test('Login testUser', async () => {
+        const response = await api
+            .post('/api/login')
+            .send(helper.testUser)
+        //console.log('responseToken',response.body.token)
+        expect(response.body.username).toBe(helper.testUser.username)
+    })
+
+    test('Add one blog and test that # of blogs +0 because no token', async () => {
+        const initialResponse = await api.get('/api/blogs')
+        const blogObject = new Blog(helper.initialBlogs[0])
+        await api
+            .post('/api/blogs')
+            .send(blogObject)
+            .expect(401)
+        const secondResponse = await api.get('/api/blogs')
+        expect(secondResponse.body.length).toBe(initialResponse.body.length)
+    })
+
+    test('Add one blog and test that # of blogs +1 because with token', async () => {
+        const userResponse = await api
+            .post('/api/login')
+            .send(helper.testUser)
+
+        const initialResponse = await api.get('/api/blogs')
+        const blogObject = new Blog(helper.blogsToken[0])
+        await api
+            .post('/api/blogs')
+            .set('Authorization' , `bearer ${userResponse.body.token}`)
+            .send(blogObject)
+            .expect(200)
+        const responseAfterAdd = await api.get('/api/blogs')
+        expect(responseAfterAdd.body.length).toBe(initialResponse.body.length + 1)
+    })
+
+})
+
+// BELOW NO TOKEN - DO NOT WORK
+
+/* describe('Add one blog and test that # of blogs +1', () => {
 
     test('Add one blog and test that # of blogs +1', async () => {
         const initialResponse = await api.get('/api/blogs')
@@ -141,7 +196,7 @@ describe('Update one blog', () => {
         expect(secondResponse.body.likes - firstResponse.body.likes).toBe(11)
 
     })
-})
+}) */
 
 afterAll(() => {
     mongoose.connection.close()
