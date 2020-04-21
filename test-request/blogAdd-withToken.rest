@@ -1,9 +1,9 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjVkZGJhYzU4MWNmN2U4NjE0ZTM0ZTY0ZSIsImlhdCI6MTU3NDc1MDQ5Nn0.O2YywQ6gkPr2v8zjDJTAkCmHh6BOdo6Om1dHGvLYlFk
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjVkZGJhYzU4MWNmN2U4NjE0ZTM0ZTY0ZSIsImlhdCI6MTU4NzQ1NDYyOX0.IjqH5Q-aKuMQN8iGJrmR5ZSJgdwHGB4NaZK6zZCgCck
 
 {
-    "title": "Blog33",
+    "title": "Blog56",
     "author": "Marko",
     "url": "http://www.example.com",
     "likes": 1,

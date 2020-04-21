@@ -12,14 +12,15 @@ const User = require('../models/user')
 
 const jwt = require('jsonwebtoken')
 
-// Function to fetch token from http request header authorization
+/* // Function to fetch token from http request header authorization
+Moved to middleware.tokenExtractor
 const getTokenFrom = request => {
     const authorization = request.get('authorization')
     if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
         return authorization.substring(7)
     }
     return null
-}
+} */
 
 
 // Get all blogs
@@ -35,10 +36,8 @@ blogsRouter.get('/', async (request, response) => {
 blogsRouter.post('/', async (request, response) => {
     const body = request.body
 
-    const token = getTokenFrom(request)
-
-    const decodedToken = jwt.verify(token, process.env.SECRET)
-    if (!token || !decodedToken.id) {
+    const decodedToken = jwt.verify(request.token, process.env.SECRET)
+    if (!request.token || !decodedToken.id) {
         return response.status(401).json({ error: 'token missing or invalid' })
     }
 
@@ -47,7 +46,7 @@ blogsRouter.post('/', async (request, response) => {
 
     // Blog's title and URL are manadotory parameters
     if (body.title === undefined || body.url === undefined) {
-        return response.status(400).end()
+        return response.status(400).json({ error: 'title and URL are manadotory' }).end()
     }
 
     const blog = new Blog(

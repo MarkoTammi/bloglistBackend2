@@ -100,6 +100,12 @@ Poistettu /tests -hakemiston harjoitustestit
 Blogin lisäys jos HTTP POST -pyynnössä on valid token  
 REST testit  
 
+4.20*: blogilistan laajennus, step9  - git branch part4-20  
+Refaktorointi tokenin erottaminen middlewareksi, joka ottaa  
+tokenin Authorization-headerista ja sijoittaa sen request-olion  
+token -kenttään.  
+
+
 
 
 

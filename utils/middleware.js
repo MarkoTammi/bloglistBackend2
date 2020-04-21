@@ -27,11 +27,23 @@ const errorHandler = (error, request, response, next) => {
 
     logger.error(error.message)
 
-    next(error)
+    next()
 }
+
+// Middleware to fetch token from http request header authorization
+// and set it to request.token
+const tokenExtractor = (request, response, next) => {
+    const authorization = request.get('authorization')
+    if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+        request.token = authorization.substring(7)
+    }
+    next()
+}
+
 
 module.exports = {
     requestLogger,
     unknownEndpoint,
-    errorHandler
+    errorHandler,
+    tokenExtractor
 }

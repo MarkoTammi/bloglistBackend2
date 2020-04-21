@@ -33,6 +33,8 @@ app.use(cors())
 // app.use(express.static('build'))
 app.use(express.json())
 app.use(middleware.requestLogger)
+// Fetch token from http request header and set it to request.token object
+app.use(middleware.tokenExtractor)
 
 app.use('/api/blogs', blogsRouter)
 app.use('/api/users', usersRouter)
