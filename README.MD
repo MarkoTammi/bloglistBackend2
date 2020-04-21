@@ -96,6 +96,11 @@ REST testi login.rest
 
 Poistettu /tests -hakemiston harjoitustestit  
 
+4.19: blogilistan laajennus, step8  - git branch part4-19  
+Blogin lisäys jos HTTP POST -pyynnössä on valid token  
+REST testit  
+
+
 
 
 
