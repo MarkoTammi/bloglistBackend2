@@ -31,7 +31,7 @@ usersRouter.post('/', async (request, response) => {
 
     } else {
         // if password or username is shorter that <4 chars
-        response.status(400).send({ error: 'too short password or username' })
+        response.status(400).send({ error: 'Too short password or username' })
     }
 })
 
@@ -50,7 +50,7 @@ usersRouter.delete('/:username', async (request, response) => {
     // Fetch all users for check
     const users = await User.find({})
     if (users.map(u => u.username).includes(request.params.username) === false){
-        response.status(400).send({ error: 'username dont exist' })
+        response.status(400).send({ error: 'Username dont exist' })
     } else {
         await User.deleteOne( { 'username' : request.params.username } )
         response.status(204).send({ 'info' : 'username removed' })

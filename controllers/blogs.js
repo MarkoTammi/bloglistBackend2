@@ -38,7 +38,7 @@ blogsRouter.post('/', async (request, response) => {
 
     const decodedToken = jwt.verify(request.token, process.env.SECRET)
     if (!request.token || !decodedToken.id) {
-        return response.status(401).json({ error: 'token missing or invalid' }).end()
+        return response.status(401).json({ error: 'Token missing or invalid' }).end()
     }
 
     const user = await User.findById(decodedToken.id)
@@ -46,7 +46,7 @@ blogsRouter.post('/', async (request, response) => {
 
     // Blog's title and URL are manadotory parameters
     if (body.title === undefined || body.url === undefined) {
-        return response.status(400).json({ error: 'title and URL are manadotory' }).end()
+        return response.status(400).json({ error: 'Title and URL are manadotory' }).end()
     }
 
     const blog = new Blog(
@@ -91,7 +91,7 @@ blogsRouter.delete('/:id', async (request, response) => {
     const decodedToken = jwt.verify(request.token, process.env.SECRET)
 
     if (!request.token || !decodedToken.id) {
-        return response.status(401).json({ error: 'token missing or invalid' }).end()
+        return response.status(401).json({ error: 'Token missing or invalid' }).end()
     }
 
     console.log('request.params.id "request blog"', request.params.id)
